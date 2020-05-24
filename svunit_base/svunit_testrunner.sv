@@ -74,8 +74,10 @@ function void svunit_testrunner::report();
   string  success_str;
 
   begin
-    svunit_testsuite match[$] = list_of_suites.find() with (item.get_results() == PASS);
-    pass_cnt = match.size();
+    //svunit_testsuite match[$] = list_of_suites.find() with (item.get_results() == PASS);
+    //pass_cnt = match.size();
+    foreach(list_of_suites[i])
+      if(list_of_suites[i].get_results() == PASS) pass_cnt++;
   end
 
   if (pass_cnt == list_of_suites.size()) begin
